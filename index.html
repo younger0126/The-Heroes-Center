@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>THE HEROES 官方中心</title>
+<link rel="stylesheet" href="./styles.css">
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+<div id="app">
+<header class="topbar"><div><div class="eyebrow">THE HEROES</div><h1>官方中心</h1></div><button id="refreshBtn" class="icon-btn">↻</button></header>
+<main>
+<section class="panel player-panel">
+<img id="avatar" class="avatar" alt="玩家頭像">
+<div class="player-main">
+<div class="player-name-row"><strong id="playerName">登入中...</strong><span id="vipBadge" class="vip-badge">VIP 0</span></div>
+<div id="titleText" class="title-text">勇者</div>
+<div class="player-meta"><span>UID <b id="uidText">-</b></span><span>Lv.<b id="levelText">-</b></span><span>戰力 <b id="powerText">-</b></span></div>
+</div>
+<div class="currency-box"><div><span>🎟️</span><b id="voucherText">0</b></div><div><span>👑</span><b id="vipPointsText">0</b></div></div>
+</section>
+
+<nav class="tabs">
+<button class="tab active" data-tab="recharge">儲值</button>
+<button class="tab" data-tab="orders">紀錄</button>
+<button class="tab" data-tab="gift">禮包碼</button>
+<button class="tab" data-tab="notice">公告</button>
+</nav>
+
+<section id="tab-recharge" class="tab-page active">
+<div class="section-head"><div><div class="eyebrow">RECHARGE</div><h2>代金券儲值</h2></div><span class="status-chip">安全驗證</span></div>
+<div id="centerApiStatus" class="result-text">儲值方案已載入</div><div id="rechargeGrid" class="recharge-grid"></div>
+<div class="info-box"><b>付款狀態</b><p>目前 v1.0 已完成訂單建立與紀錄介面；正式刷卡／ATM／超商付款需再串接金流商 webhook。付款成功後由後端發放代金券與 VIP 點數。</p></div>
+</section>
+
+<section id="tab-orders" class="tab-page"><div class="section-head"><div><div class="eyebrow">ORDERS</div><h2>儲值紀錄</h2></div></div><div id="ordersList" class="stack-list"></div></section>
+
+<section id="tab-gift" class="tab-page">
+<div class="section-head"><div><div class="eyebrow">GIFT CODE</div><h2>禮包碼兌換</h2></div></div>
+<div class="gift-box"><input id="giftInput" maxlength="40" placeholder="輸入禮包碼"><button id="redeemBtn" class="primary-btn">立即兌換</button><div id="giftResult" class="result-text"></div></div>
+</section>
+
+<section id="tab-notice" class="tab-page"><div class="section-head"><div><div class="eyebrow">NEWS</div><h2>官方公告</h2></div></div><div id="noticeList" class="stack-list"></div></section>
+</main>
+<footer class="bottom-actions"><button id="openGameBtn">🎮 開始遊戲</button><button id="supportBtn">💬 客服</button></footer>
+<div id="toast" class="toast"></div>
+
+<div id="orderModal" class="game-modal" aria-hidden="true">
+  <div class="game-modal-backdrop"></div>
+  <div class="game-modal-card">
+    <div class="game-modal-kicker">THE HEROES</div>
+    <h3>確認儲值訂單</h3>
+    <div id="orderModalText" class="game-modal-text"></div>
+    <div class="game-modal-note">目前尚未串接正式金流，建立後會先顯示為「待付款」。</div>
+    <div class="game-modal-actions">
+      <button id="orderModalCancel" class="modal-cancel">取消</button>
+      <button id="orderModalConfirm" class="modal-confirm">確認建立</button>
+    </div>
+  </div>
+</div>
+
+<div id="loading" class="loading-overlay"><div class="spinner"></div><div>正在登入 THE HEROES...</div></div>
+</div>
+<script src="./config.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
